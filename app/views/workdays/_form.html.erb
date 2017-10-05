@@ -1,0 +1,30 @@
+<%= form_with scope: :workday, url: workdays_path, local: true do |form| %>
+
+  <% if @workday.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@workday.errors.count, "error") %> prohibited
+        this workday from being saved:
+      </h2>
+      <ul>
+        <% @workday.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %> 
+  </p>
+  <p>
+    <%= form.label :workday_type %><br>
+    <%= form.text_field :workday_type %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>

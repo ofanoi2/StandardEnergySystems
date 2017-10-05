@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  building_number: 1
+  building_address: MyString
+  complete: false
+  building_route_order: 1
+  jajo: false
+  fman: false
+  mjsd: false
+  workday: one
+
+two:
+  building_number: 1
+  building_address: MyString
+  complete: false
+  building_route_order: 1
+  jajo: false
+  fman: false
+  mjsd: false
+  workday: two
