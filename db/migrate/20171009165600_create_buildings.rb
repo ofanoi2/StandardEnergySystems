@@ -1,7 +1,7 @@
 class CreateBuildings < ActiveRecord::Migration[5.1]
   def change
     create_table :buildings do |t|
-      t.integer :building_number
+      t.string :building_number
       t.string :building_name
       t.string :building_address
       t.boolean :complete
