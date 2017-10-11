@@ -2,20 +2,24 @@
 
 one:
   building_number: 1
+  building_name: MyString
   building_address: MyString
   complete: false
-  building_route_order: 1
+  building_start_order: 1
   jajo: false
   fman: false
   mjsd: false
+  active_yn: MyString
   workday: one
 
 two:
   building_number: 1
+  building_name: MyString
   building_address: MyString
   complete: false
-  building_route_order: 1
+  building_start_order: 1
   jajo: false
   fman: false
   mjsd: false
+  active_yn: MyString
   workday: two

@@ -10,20 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003205621) do
+ActiveRecord::Schema.define(version: 20171011195726) do
 
   create_table "buildings", force: :cascade do |t|
     t.integer "building_number"
+    t.string "building_name"
     t.string "building_address"
     t.boolean "complete"
-    t.integer "building_route_order"
+    t.integer "building_start_order"
     t.boolean "jajo"
     t.boolean "fman"
     t.boolean "mjsd"
+    t.string "active_yn"
     t.integer "workday_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["workday_id"], name: "index_buildings_on_workday_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string "title"
+    t.text "note"
+    t.integer "workday_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["workday_id"], name: "index_notes_on_workday_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,4 +1,5 @@
 class WorkdaysController < ApplicationController
+before_action :admin_user, only: [:index, :new, :create, :edit, :update, :destroy]
 	def index
 	  @workdays = Workday.all
 
@@ -50,4 +51,5 @@ class WorkdaysController < ApplicationController
   	  def workday_params
         params.require(:workday).permit(:title, :workday_type)
       end
+
 end

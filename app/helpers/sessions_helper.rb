@@ -40,6 +40,11 @@ module SessionsHelper
     session.delete(:forwarding_url)
   end
 
+# # Always go to login page unless session contain user_id
+#   def ensure_login 
+#     redirect_to root_url unless session[:user_id]&&user.admin?
+#   end
+
 # Stores the URL trying to be accessed.
   def store_location
     session[:forwarding_url] = request.original_url if request.get?

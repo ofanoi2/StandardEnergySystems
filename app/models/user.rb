@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
 # Use of call back to format email before storing in database
   before_save   :downcase_email
+  
   before_create :create_activation_digest
 
   validates :name, presence: true, length: { maximum: 50 } 
@@ -35,6 +36,7 @@ class User < ApplicationRecord
 
 # Returns true if the given token matches the digest.
   def authenticated?(remember_token)
+    return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end  
 
