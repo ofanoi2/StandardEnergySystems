@@ -25,7 +25,7 @@ class BuildingsController < ApplicaitonController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def building_params
-      params.require(:note).permit(:title, :note)
+      params.require(:building).permit(:building_number, :building_name, :building_address, :complete)
     end  	
 
 
