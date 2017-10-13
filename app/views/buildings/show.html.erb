@@ -1,0 +1,19 @@
+<% provide(:title, "Building") %>
+<div class="row">
+  <div class="col-sm-4">
+    
+    <div class="panel panel-default text-center">
+      <div class="panel-heading">
+        <h1><%= @building.building_name %></h1>
+        <button class="btn btn-lg"><%= link_to 'Back', workday_path %></button>
+        <button class="btn btn-lg"><%= link_to 'Edit', edit_workday_building_path(@workday) %></button>  
+      </div>
+      <div class="panel-body">
+    		<p>
+    		  <strong>Complete:<%= @workday.complete %></strong>
+    		</p>
+      </div>
+    </div>
+
+  </div>
+</div>  

@@ -1,6 +1,12 @@
 class BuildingsController < ApplicationController
 	
+	before_action :admin_user , only: [:show, :edit, :delete]
 	before_action :set_workday
+	
+
+	def show
+	  @building = @workday.buildings.find(params[:id])	
+	end
 
 	def edit
 	  @building = @workday.buildings.find(params[:id])	
@@ -12,7 +18,7 @@ class BuildingsController < ApplicationController
 	  if @building.update(building_params)
 	  	# Handle a successful update.
         flash[:success] = "Building updated"
-	    redirect_to @workday
+	    redirect_to @building
 	  else
 	    render 'edit'
 	  end
@@ -21,6 +27,7 @@ class BuildingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_workday
+
       @workday = Workday.find(params[:workday_id])
     end
 

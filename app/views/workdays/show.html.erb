@@ -55,7 +55,7 @@
       <tbody>
         <% @workday.buildings.each do |b| %>
         <tr>
-          <td><%= b.building_number %></td>      
+          <td><%= link_to b.building_number, [@workday, b] %></td>      
           <td><%= b.building_name %></td>
           <td><%= b.building_address %></td>
           <td><%= b.complete %></td>
