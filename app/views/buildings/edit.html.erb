@@ -1,0 +1,49 @@
+<% provide(:title, "Edit building") %>
+<h1>Update Building</h1>
+<div class="form-group">
+   <%= form_with scope: :building, url: edit_workday_building_path, local: true do |form| %>
+
+  <% if @building.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@building.errors.count, "error") %> prohibited
+        this building information from being saved:
+      </h2>
+      <ul>
+        <% @building.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <p>
+    <%= form.label :building_name %><br>
+    <%= form.text_field :building_name %> 
+  </p>
+  <p>
+    <%= form.label :building_number %><br>
+    <%= form.text_field :building_number %>
+  </p>
+  <p>
+    <%= form.label :building_address %><br>
+    <%= form.text_field :building_address %>
+  </p>  
+
+<!--  <p>
+    <%= form.label :complete, class: "checkbox inline" do %>
+      <%= form.check_box :complete %>
+      <span>Click to set work day as complete</span>
+    <% end %>   
+  </p> --> 
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+  <% end %>
+</div> 
+
+
+<%= link_to 'Back', workdays_path %> 

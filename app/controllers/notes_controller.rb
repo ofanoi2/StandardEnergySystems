@@ -1,4 +1,4 @@
-class NotesController < ApplicationController
+ class NotesController < ApplicationController
    
    before_action :admin_user, only: [:create, :destroy]
    before_action :set_workday, only: [:create, :destroy]

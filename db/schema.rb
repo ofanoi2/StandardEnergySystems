@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011195726) do
+ActiveRecord::Schema.define(version: 20171110203831) do
 
   create_table "buildings", force: :cascade do |t|
     t.integer "building_number"
@@ -26,6 +26,23 @@ ActiveRecord::Schema.define(version: 20171011195726) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["workday_id"], name: "index_buildings_on_workday_id"
+  end
+
+  create_table "meters", force: :cascade do |t|
+    t.string "meter_number"
+    t.string "meter_type"
+    t.integer "sequence_number"
+    t.integer "previous_read"
+    t.integer "current_read"
+    t.integer "unit"
+    t.decimal "previous_read_demand"
+    t.decimal "current_read_demand"
+    t.datetime "previous_read_date"
+    t.datetime "current_read_date"
+    t.integer "building_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_meters_on_building_id"
   end
 
   create_table "notes", force: :cascade do |t|

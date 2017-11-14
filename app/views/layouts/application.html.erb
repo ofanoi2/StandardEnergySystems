@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Standard Energy Systems<%= full_title(yield(:title)) %></title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag  'application',  'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -108,10 +108,10 @@
                   <h5 class="title mb-3"><strong></strong></h5>
                   <ul>
                       <li>
-                          <a href="/about">About Us</a>
+                        <a href="/about">About Us</a>
                       </li>
                       <li>
-                          <a href="/contact">Contact Us</a>
+                        <a href="/contact">Contact Us</a>
                       </li>
                   </ul>
               </div>
@@ -126,38 +126,13 @@
       <div class="call-to-action">
           <h4 class="mb-5"></h4>
           <ul>
-              <li><h5>Get our Services</h5></li>
-              <li><a target="_blank" href="/signup" class="btn btn-danger" rel="nofollow">Sign up!</a></li>
+            <li><h5>Get our Services</h5></li>
+            <li><a target="_blank" href="/signup" class="btn btn-danger" rel="nofollow">Sign up!</a></li>
           </ul>
       </div>
       <!--/.Call to action-->
-
+      
       <div class="container-fluid bg-grey">
-        <h3 class="text-center">CONTACT</h3>
-        <div class="row">
-          <div class="col-sm-5">
-            <p>Contact us and we'll get back to you within 24 hours.</p>
-            <p><span class="glyphicon glyphicon-map-marker"></span> 5555 State Road Parma, OH 44134</p>
-            <p><span class="glyphicon glyphicon-phone"></span> (216) 749-5123</p>
-            <p><span class="glyphicon glyphicon-envelope"></span> contactus@standardenergysystems.com</p> 
-          </div>
-          <div class="col-sm-7">
-            <div class="row">
-              <div class="col-sm-6 form-group">
-                <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-              </div>
-              <div class="col-sm-6 form-group">
-                <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-              </div>
-            </div>
-            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-            <div class="row">
-              <div class="col-sm-12 form-group">
-                <button class="btn btn-default pull-right" type="submit">Send</button>
-              </div>
-            </div> 
-          </div>
-        </div>
       </div>
 
       <!--Copyright-->

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  meter_number: MyString
+  meter_type: MyString
+  sequence_number: 
+  previous_read: 1
+  current_read: 1
+  unit: 1
+  previous_read_demand: 9.99
+  current_read_demand: 9.99
+  previous_read_date: 2017-11-10 15:38:31
+  current_read_date: 2017-11-10 15:38:31
+  building: one
+
+two:
+  meter_number: MyString
+  meter_type: MyString
+  sequence_number: 
+  previous_read: 1
+  current_read: 1
+  unit: 1
+  previous_read_demand: 9.99
+  current_read_demand: 9.99
+  previous_read_date: 2017-11-10 15:38:31
+  current_read_date: 2017-11-10 15:38:31
+  building: two

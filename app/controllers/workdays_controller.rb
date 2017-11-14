@@ -10,6 +10,7 @@ class WorkdaysController < ApplicationController
 
     def show
 	  @workday = Workday.find(params[:id])
+	  @building = @workday.buildings.paginate(page: params[:page], per_page: 1)
 	end
 
 	def new

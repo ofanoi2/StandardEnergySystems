@@ -6,6 +6,7 @@ class BuildingsController < ApplicationController
 
 	def show
 	  @building = @workday.buildings.find(params[:id])	
+	  @meter = @building.meters.paginate(page: params[:page], per_page: 1)
 	end
 
 	def edit

@@ -1,0 +1,19 @@
+
+<%= link_to 'Create New Account', new_account_path %>
+
+<hr class="extra-margins my-5">
+
+<div class="col-sm-4">
+	<%= form_tag(accounts_path, :method => "get", id: "search-form") do %>
+	   <p>Account Number: <%= text_field_tag :account_number, params[:account_number], placeholder: "Please Enter Account Number"  %><p>
+	   <%= submit_tag "Submit", :name => nil %>
+	<% end %>
+</div>
+
+<hr class="extra-margins my-5">
+
+<% if @account.present? %>
+	<%= render @account %>
+<% else @account.blank? %>
+   <p>The <%= params[:account_number] %> account does not exist, please check the account number you entered and try again </p>
+<% end %>

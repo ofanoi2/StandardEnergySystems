@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html root 'welcome#home'
+# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html root 'welcome#home'
  root 'welcome#home'
   get  '/help',    to: 'welcome#help'
   get  '/about',   to: 'welcome#about'
@@ -17,10 +16,21 @@ Rails.application.routes.draw do
 
   # get '/buildings', to: 'buildings#show'
 
+  # get 'meters/show'
+
+  # get 'meters/create'
+
+  # get 'meters/edit'
+
+  # get 'meters/destroy'
+
  resources :users
  resources :account_activations, only: [:edit]
  resources :workdays do
  	resources :notes, only: [:create, :edit, :destroy]
- 	resources :buildings
+ 	resources :buildings do
+    resources :meters, only: [:show, :create, :edit, :destroy]
+  end
  end
+ resources :accounts
 end

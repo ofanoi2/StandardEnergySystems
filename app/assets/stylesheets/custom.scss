@@ -794,6 +794,10 @@ a:not([href]):not([tabindex]), a:not([href]):not([tabindex]):focus, a:not([href]
     text-decoration: none;
 }
 
+//
+
+
+
 //Disabled cursor
 .disabled {
     cursor: not-allowed!important;
@@ -1553,6 +1557,19 @@ h6 {
 
 
 /* Carousel and pictures */
+
+.carousel{
+    background: #2f4357;
+    margin-top: 20px;
+}
+
+.carousel .item{
+    min-height: 5px;
+}
+
+.carousel .item img{
+    margin: 0 auto;
+}
 
 .view:not(.hm-zoom) {
     overflow:visible;
