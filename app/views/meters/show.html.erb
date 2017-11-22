@@ -1,2 +1,16 @@
-<h1>Meters#show</h1>
-<p>Find me in app/views/meters/show.html.erb</p>
+<% provide(:title, "Meter") %>
+<div>
+    <%= form_for( [@building,@building.meters.new] ) do |f| %>
+	    <div class="field">
+	        <%= f.label :meter_number %><br>
+	        <%= f.text_field :meter_number, :value => @meter.meter_number %>
+	    </div>
+	    <div class="field">
+	        <%= f.label :current_read %><br>
+	        <%= f.number_field :current_read %>
+	    </div>      
+	    <div class="actions">
+	        <%= f.submit "Submit", class: "actions" %> 
+	    </div>
+    <% end %>   
+</div>

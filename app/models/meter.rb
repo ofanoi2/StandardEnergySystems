@@ -3,5 +3,6 @@ class Meter < ApplicationRecord
 
   default_scope {order sequence_number: :asc}
 
-  scope :get_completed_count, ->(value){where("completed = :value", value: value).count}
+  scope :get_meter_number, ->(meter_number){where("meter_number = :meter_number", meter_number: meter_number)}
+   
 end

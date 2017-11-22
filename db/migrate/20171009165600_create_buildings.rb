@@ -9,7 +9,7 @@ class CreateBuildings < ActiveRecord::Migration[5.1]
       t.boolean :jajo, default: false
       t.boolean :fman, default: false
       t.boolean :mjsd, default: false
-      t.string :active_yn
+      t.boolean :active_yn , default: true
       t.references :workday, foreign_key: true
 
       t.timestamps

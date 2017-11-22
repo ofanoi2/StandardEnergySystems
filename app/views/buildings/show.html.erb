@@ -7,6 +7,7 @@
       <div class="panel-heading">
         <h1><%= @building.building_name %></h1>
         <button class="btn btn-lg"><%= link_to 'Edit', edit_workday_building_path(@workday) %></button>  
+        <button class="btn btn-lg"><%= link_to 'Back', workday_path(@workday) %></button>
       </div>
       <div class="panel-body">
     		<p><strong>Complete:<%= @workday.complete %></strong></p>
@@ -21,11 +22,10 @@
       <% @meter.each do |m| %>
         <div class="panel panel-default text-center">
           <div class="panel-heading">
-            <%= m.meter_number %>
+            <%=  link_to m.meter_number, '#'  %><button class="btn btn-sm"><%=link_to 'Enter Read', [@building, m] %></button>
           </div>                                          
           <div class="panel-body">
             <div class="col-sm-4">
-              
             </div>
           </div> 
           <div class="panel-footer">

@@ -6,7 +6,8 @@ class BuildingsController < ApplicationController
 
 	def show
 	  @building = @workday.buildings.find(params[:id])	
-	  @meter = @building.meters.paginate(page: params[:page], per_page: 1)
+	  @meter = @building.meters.distinct.paginate(page: params[:page], per_page: 1)
+	  # @meter = @building.meters.pluck(:meter_number).paginate(page: params[:page], per_page: 1)
 	end
 
 	def edit
@@ -28,7 +29,6 @@ class BuildingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_workday
-
       @workday = Workday.find(params[:workday_id])
     end
 
@@ -36,6 +36,5 @@ class BuildingsController < ApplicationController
     def building_params
       params.require(:building).permit(:building_number, :building_name, :building_address, :complete)
     end  	
-
 
 end

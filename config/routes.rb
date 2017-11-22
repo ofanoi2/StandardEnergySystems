@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   # get 'meters/show'
 
-  # get 'meters/create'
+  get 'meters/create'
 
   # get 'meters/edit'
 
@@ -28,9 +28,10 @@ Rails.application.routes.draw do
  resources :account_activations, only: [:edit]
  resources :workdays do
  	resources :notes, only: [:create, :edit, :destroy]
- 	resources :buildings do
-    resources :meters, only: [:show, :create, :edit, :destroy]
-  end
+ 	resources :buildings 
  end
+ resources :buildings do
+    resources :meters, only: [:show, :new, :create, :edit, :destroy]
+  end
  resources :accounts
 end

@@ -1,28 +1,32 @@
 class MetersController < ApplicationController
 
 	before_action :admin_user , only: [:show, :create, :edit, :update, :delete]
-	before_action :set_building
+	before_action :set_building , :set_workday
 
   def show
-  	@meter = @building.meters.paginate(page: params[:page], per_page: 1)
+  	@meter = @building.meters.find(params[:id])
+  end
+
+  def new
+    @meter = @building.meters.new
   end
 
   def create
     @meter = @building.meters.new(meter_params)
 
-    respond_to do |format|
-      if @meter.save
-        format.html { redirect_to @building.meters.paginate(page: params[:page], per_page: 1), notice: 'Read was successfully added.' }
-      else
-        format.html { redirect_to @building.meters.paginate(page: params[:page], per_page: 1), alert: "Unable to add read!" }
-      end
+    if @meter.save
+      flash[:success] = 'Read was successfully added.'
+      redirect_to workday_building_path(@workday,@building) 
+    else
+      flash.now[:danger] = "Unable to add read!" 
+      redirect_to [@building,@meter]
     end
+
   end
 
   def edit
     @meter = @building.meters.find(params[:id])
   end
-
 
   def update
     @meter = @building.meters.find(params[:id])
@@ -42,11 +46,15 @@ class MetersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_workday
+      @workday = Building.where("id = ?",params[:building_id]).pluck(:workday_id)
+    end
+
     def set_building
       @building = Building.find(params[:building_id])
     end
       
     def meter_params
-      params.require(:meter).permit(:current_read)
+      params.require(:meter).permit(:meter_number, :current_read)
     end 
 end
