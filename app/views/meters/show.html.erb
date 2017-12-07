@@ -1,10 +1,16 @@
 <% provide(:title, "Meter") %>
 <div>
     <%= form_for( [@building,@building.meters.new] ) do |f| %>
-	    <div class="field">
-	        <%= f.label :meter_number %><br>
-	        <%= f.text_field :meter_number, :value => @meter.meter_number %>
-	    </div>
+	    <div class="row">
+		    <div class="field">
+		        <%= f.label :meter_number %><br>
+		        <%= f.text_field :meter_number, :value => @meter.meter_number %>
+		    </div>
+		    <div class="field">
+		        <%= f.label :previous_read %><br>
+		        <%= f.hidden_field :previous_read, :value => @meter.previous_read %>
+		    </div>
+		</div>
 	    <div class="field">
 	        <%= f.label :current_read %><br>
 	        <%= f.number_field :current_read %>

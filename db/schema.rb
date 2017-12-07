@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171110203831) do
+ActiveRecord::Schema.define(version: 20171207154231) do
 
   create_table "buildings", force: :cascade do |t|
-    t.integer "building_number"
+    t.string "building_number"
     t.string "building_name"
     t.string "building_address"
-    t.boolean "complete"
+    t.boolean "complete", default: false
     t.integer "building_start_order"
-    t.boolean "jajo"
-    t.boolean "fman"
-    t.boolean "mjsd"
-    t.string "active_yn"
+    t.boolean "jajo", default: false
+    t.boolean "fman", default: false
+    t.boolean "mjsd", default: false
+    t.boolean "active_yn", default: true
     t.integer "workday_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20171110203831) do
     t.integer "sequence_number"
     t.integer "previous_read"
     t.integer "current_read"
-    t.integer "unit"
+    t.integer "units"
     t.decimal "previous_read_demand"
     t.decimal "current_read_demand"
     t.datetime "previous_read_date"
@@ -42,6 +42,10 @@ ActiveRecord::Schema.define(version: 20171110203831) do
     t.integer "building_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "demand_yn", default: false
+    t.decimal "demand_units"
+    t.string "meter_location"
+    t.boolean "active_yn", default: true
     t.index ["building_id"], name: "index_meters_on_building_id"
   end
 
