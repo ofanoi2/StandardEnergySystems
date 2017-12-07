@@ -31,11 +31,11 @@ class MetersController < ApplicationController
     if @meter.save
       if @meter_number.index("#{@meter.meter_number}")+1 == @meter_number.length
         @page = ((@building_number.index(@building_id[0])+1)/1)+1
-        redirect_to "/workdays/#{@workday[0]}?page=#{@page}" #
+        redirect_to "/workdays/#{@workday[0]}?page=#{@page}" 
       else
         flash[:success] = 'Read was successfully added.'
         @page = ((@meter_number.index("#{@meter.meter_number}")+1)/1)+1
-        redirect_to "/workdays/#{@workday[0]}/buildings/#{@building_id[0]}?page=#{@page}"#
+        redirect_to "/workdays/#{@workday[0]}/buildings/#{@building_id[0]}?page=#{@page}"
       end
     else
       flash.now[:danger] = "Unable to add read!" 
@@ -75,7 +75,7 @@ class MetersController < ApplicationController
     end
 
     def set_meter_number
-      @meter_number = Building.includes("meters").distinct.where("meter_number is not null").order("sequence_number").pluck(:meter_number)
+      @meter_number = Building.includes("meters").distinct.where("meter_number is not null and building_id = :building_id", building_id: params[:building_id]).order("sequence_number").pluck(:meter_number)
     end
 
     def set_building_id
