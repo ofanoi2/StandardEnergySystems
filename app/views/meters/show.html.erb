@@ -8,7 +8,7 @@
 		    </div>
 		    <div class="field">
 		        <%= f.label :previous_read %><br>
-		        <%= f.hidden_field :previous_read, :value => @meter.previous_read %>
+		        <%= f.hidden_field :previous_read, :value => @v_pre_read %>
 		    </div>
 		</div>
 	    <div class="field">
@@ -16,8 +16,8 @@
 	        <%= f.number_field :current_read %>
 	    </div>   
 	    <div class="field">
-	        <%= f.label :current_demand_read %><br>
-	        <%= f.number_field :current_read %>
+	        <%= f.label :current_read_demand %><br>
+	        <%= f.number_field :current_read_demand, :disable => "if #{@meter.demand_yn} == f" %>
 	    </div>    
 	    <div class="actions">
 	        <%= f.submit "Submit", class: "actions" %> 

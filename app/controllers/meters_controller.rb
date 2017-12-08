@@ -5,6 +5,7 @@ class MetersController < ApplicationController
 
   def show
   	@meter = @building.meters.find(params[:id])
+    @v_pre_read = Meter.get_previous_read(@meter.meter_number)[0]
   end
 
   def new
@@ -25,8 +26,6 @@ class MetersController < ApplicationController
     # @id = @building.meters.where("sequence_number is not null and meter_number = :meter_number", meter_number: @meter.meter_number).pluck(:id) 
     # @count = @building.meters.where('id < :id and sequence_number is not null', id: @id[0]).order("sequence_number").count
     # @count = Building.includes("meters").where("id < :id and sequence_number is not null", id: @id[0]).order("sequence_number").count
-    
-    @building_number =
      
     if @meter.save
       if @meter_number.index("#{@meter.meter_number}")+1 == @meter_number.length
@@ -87,6 +86,6 @@ class MetersController < ApplicationController
     end  
 
     def meter_params
-      params.require(:meter).permit(:meter_number, :current_read)
+      params.require(:meter).permit(:meter_number, :current_read, :previous_read, :current_read_demand)
     end 
 end
