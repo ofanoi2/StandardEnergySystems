@@ -569,7 +569,7 @@ w21d = Workday.find_by(title: "Workday 21", workday_type: "Downtown")
 w21d.buildings.create! [
   { building_number:"11071", building_name:"WEST MARKET PLAZA", building_address:"3863-3899 MEDINA ROAD 44333", active_yn:"1" },
   { building_number:"11085", building_name:"CROWN POINTE", building_address:"175 MONTROSE WEST,  AKRON 44321", active_yn:"1" },
-  { building_nu mber:"11500", building_name:"ROSEMONT COMMONS", building_address:"3750 WEST MARKET 44333", active_yn:"1", mjsd:"1" },
+  { building_number:"11500", building_name:"ROSEMONT COMMONS", building_address:"3750 WEST MARKET 44333", active_yn:"1", mjsd:"1" },
   { building_number:"11600", building_name:"SHOPS OF FAIRLAWN", building_address:"3737 WEST MARKET 44333", active_yn:"1", mjsd:"1" },
   { building_number:"11800", building_name:"WEST MARKET PLAZA", building_address:"3879 MEDINA ROAD 44333", active_yn:"1", mjsd:"1" },
   { building_number:"33002", building_name:"PEAK PERFORMANCE CENTER", building_address:"1 EAGLE VALLEY 44147", active_yn:"1" },
