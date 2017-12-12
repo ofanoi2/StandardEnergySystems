@@ -17,21 +17,19 @@
 
   </div>
 
-  <div class="col-lg-8">
+  <div class="col-lg-5">
     
     <div class="jumbotron">
-      <% @meter_number.uniq.each do |k,m| %>
+      <% @arr.uniq.each do |k,m| %>
         <% %>
         <div class="panel panel-default text-center">
           <div class="panel-heading">
             <h3><%= k %></h3><button class="btn btn-sm"><%=link_to 'Enter Read', building_meter_path(@building,@id) %></button>
+            <h3>meter is located: <%= @meter_location[0][0] =%></h3>
           </div>                                          
-          <div class="panel-body">
-            <h3>meter is located: <%= @meter_location[0] =%></h3>
-          </div> 
-          <div class="panel-footer">
-            <button class="btn btn-sm"><%= will_paginate @meter_number, :page_links => false %></button><br>
-          </div>          
+          <div class="panel-body" align="justify-content-center">
+           <%= will_paginate @arr, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'justify-content-center', :outer_window => 0, :page_links => false %>
+          </div>       
         </div>  
       <% end %>   
     </div>
