@@ -50,7 +50,7 @@
             <p><strong><%= b.building_address %></strong></p>
           </div> 
           <div class="panel-footer">
-            <button class="btn btn-sm"><%= will_paginate @building, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, :page_links => false %></button>
+            <%= will_paginate @building, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, :page_links => false %>
           </div>          
         </div>    
       <% end %>   
