@@ -5,7 +5,7 @@ class MetersController < ApplicationController
 
   def show
   	@meter = @building.meters.find(params[:id])
-    @v_pre_read = Meter.get_previous_read(@meter.meter_number)[0]
+    @v_pre_read = Meter.get_previous_read(@meter.meter_number, params[:building_id])[0]
   end
 
   def new

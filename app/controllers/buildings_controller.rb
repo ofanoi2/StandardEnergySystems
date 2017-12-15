@@ -19,6 +19,7 @@ class BuildingsController < ApplicationController
 	  	@meter_location = @building.meters.distinct.where("sequence_number is not null and meter_number = :meter_number", meter_number: key).pluck(:meter_location, :sequence_number )
 	  end
 	  @page = @workday.buildings.pluck(:building_number)
+	  @v_page = (@page.index(@building.building_number)+1)+1 
 	end
 
 	def edit
