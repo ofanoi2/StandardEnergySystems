@@ -11,6 +11,9 @@ class WorkdaysController < ApplicationController
     def show
 	  @workday = Workday.find(params[:id])
 	  @building = @workday.buildings.paginate(page: params[:page], per_page: 1)
+	  @workday_total = @workday.buildings.count.to_i
+	  @workday_status = @workday.buildings.where("complete = 't'").count.to_i
+	  @workday_status_percent = (@workday_status /= @workday_total)*100
 	end
 
 	def new

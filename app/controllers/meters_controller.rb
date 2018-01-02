@@ -1,11 +1,12 @@
 class MetersController < ApplicationController
 
 	before_action :admin_user , only: [:show, :create, :edit, :update, :delete]
-	before_action :set_building , :set_workday, :set_meter_number, :set_building_id, :set_building_number
+	before_action :set_workday, :set_building, :set_building_id, :set_building_number,:set_meter_number #, :set_meter_id
 
   def show
   	@meter = @building.meters.find(params[:id])
     @v_pre_read = Meter.get_previous_read(@meter.meter_number, params[:building_id])[0]
+    @noread_options = Noread.all.map { |e| [e.description,e.id] }
   end
 
   def new
@@ -14,7 +15,7 @@ class MetersController < ApplicationController
 
   def create
     @meter = @building.meters.new(meter_params)
-
+    @v_meter_id = Meter.get_meter_id(@meter.meter_number, params[:building_id])[0]
     #session[:return_to] ||= request.referer
 
     #@count = @building.meters.count(:conditions => ['id < :id', id: :id])
@@ -28,17 +29,27 @@ class MetersController < ApplicationController
     # @count = Building.includes("meters").where("id < :id and sequence_number is not null", id: @id[0]).order("sequence_number").count
      
     if @meter.save
-      if @meter_number.flatten.uniq.index("#{@meter.meter_number}")+1 == @meter_number.length
+      if @meter_number.flatten.uniq.index("#{@meter.meter_number}") == 0 && @meter_number.flatten.uniq.length == 3
         @page = ((@building_number.index(@building_id[0])+1)/1)+1
         redirect_to "/workdays/#{@workday[0]}?page=#{@page}" 
-      else
+      elsif @meter_number.flatten.uniq.index("#{@meter.meter_number}") == @meter_number.length
+        @page = ((@building_number.index(@building_id[0])+1)/1)+1
+        redirect_to "/workdays/#{@workday[0]}?page=#{@page}" 
+      else        
         flash[:success] = 'Read was successfully added.'
         @page = ((@meter_number.flatten.uniq.index("#{@meter.meter_number}")+1)/1)+1
         redirect_to "/workdays/#{@workday[0]}/buildings/#{@building_id[0]}?page=#{@page}"
       end
     else
-      flash.now[:danger] = "Unable to add read!" 
-      redirect_to [@building,@meter]
+      if @meter.errors.any?
+        @meter.errors.full_messages.each do |msg| 
+          flash[:danger] = "Unable to add read! Please reread!" + 
+                             @meter.errors.count.to_s + "errors prohibited this meter reading from being saved" + 
+                                msg
+        end
+      end
+      # @page = ((@meter_number.flatten.uniq.index("#{@meter.meter_number}")+1)/1)
+      redirect_to "/buildings/#{@building_id[0]}/meters/#{@v_meter_id}"
     end
 
   end
@@ -52,7 +63,7 @@ class MetersController < ApplicationController
    
     if @meter.update(meter_params)
       # Handle a successful update.
-        flash[:success] = "meter updated"
+      flash[:success] = "meter updated"
       redirect_to @building
     else
       render 'edit'
@@ -73,10 +84,6 @@ class MetersController < ApplicationController
       @building = Building.find(params[:building_id])
     end
 
-    def set_meter_number
-      @meter_number = Building.includes("meters").distinct.where("meter_number is not null and building_id = :building_id", building_id: params[:building_id]).order("sequence_number").pluck(:meter_number, :sequence_number)
-    end
-
     def set_building_id
       @building_id = Building.where("id = ?",params[:building_id]).pluck(:id)
     end
@@ -85,7 +92,11 @@ class MetersController < ApplicationController
       @building_number = Building.where("workday_id = :workday_id", workday_id:@workday[0]).pluck(:id)
     end  
 
+    def set_meter_number
+      @meter_number = Building.includes("meters").distinct.where("meter_number is not null and building_id = :building_id", building_id: params[:building_id]).order("sequence_number").pluck(:meter_number, :sequence_number)
+    end 
+
     def meter_params
-      params.require(:meter).permit(:meter_number, :current_read, :previous_read, :current_read_demand)
+      params.require(:meter).permit(:meter_number, :current_read, :previous_read, :current_read_demand, :demand_yn, :noread_yn, :noread_description)
     end 
 end

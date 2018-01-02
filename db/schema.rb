@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207154231) do
+ActiveRecord::Schema.define(version: 20171229152155) do
 
   create_table "buildings", force: :cascade do |t|
     t.string "building_number"
@@ -46,7 +46,15 @@ ActiveRecord::Schema.define(version: 20171207154231) do
     t.decimal "demand_units"
     t.string "meter_location"
     t.boolean "active_yn", default: true
+    t.boolean "noread_yn", default: false
+    t.string "noread_description"
     t.index ["building_id"], name: "index_meters_on_building_id"
+  end
+
+  create_table "noreads", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "notes", force: :cascade do |t|
@@ -63,7 +71,7 @@ ActiveRecord::Schema.define(version: 20171207154231) do
     t.string "email"
     t.string "password_digest"
     t.string "remember_digest"
-    t.boolean "user_role", default: false
+    t.boolean "user_role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "activation_digest"
@@ -75,7 +83,7 @@ ActiveRecord::Schema.define(version: 20171207154231) do
   create_table "workdays", force: :cascade do |t|
     t.string "title"
     t.string "workday_type"
-    t.boolean "complete"
+    t.boolean "complete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

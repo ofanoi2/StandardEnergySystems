@@ -10,6 +10,11 @@
       </div>
       <div class="panel-body">
     		<p><strong>Complete:<%= @workday.complete %></strong></p>
+        <p>Workday Status:
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="#{@workday_status_percent}" aria-valuemin="0" aria-valuemax="100" style="width:#{@workday_status_percent}"><%= @workday_status_percent %> % complete</div>
+          </div>
+        </p>
       </div>
     </div>
     <hr class="extra-margins my-5">
@@ -41,23 +46,12 @@
   <div class="col-lg-6">
     <div class="jumbotron">
       <% @building.each do |b| %>
-        <div class="panel panel-default text-center">
-          <div class="panel-heading">
-            <h3><%= b.building_number %></h3><%= link_to b.building_name, [@workday, b] %>
-          </div> 
-          <div class="panel-body">
-            <p><strong></strong></p>
-            <p><strong><%= b.building_address %></strong></p>
-          </div> 
-          <div class="panel-footer">
-            <button class="btn btn-lg"><%= will_paginate @building, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, :page_links => false %></button> 
-          </div>          
-        </div>    
+         <h3 class="h3-responsive"><%= b.building_number %></h3><%= link_to b.building_name, [@workday, b] %>
+         <p><strong><%= b.building_address %></strong></p>
+         <hr class="my-2">
+         <div align="center"><%= will_paginate @building, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, :page_links => false %></div>     
       <% end %>   
     </div>
-
-
-
   </div>
 
 </div>

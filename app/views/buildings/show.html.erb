@@ -13,8 +13,14 @@
           <button class="btn btn-lg"><%= link_to 'Back', "/workdays/#{@building.workday_id}?page=#{@v_page}"  %></button>
         <% end %>  
       </div>
-      <div class="panel-body">
-    		<p><strong>Complete:<%= @workday.complete %></strong></p>
+      <div class="panel-body">Status
+    		<p><strong>Complete: <%= @workday.complete %></strong></p>
+        <div class="progress"><strong>Progress</strong>
+          <div class="progress-bar" role="progressbar" aria-valuenow="#{@v_total}" aria-valuemin="0" aria-valuemax="100" style="width:<%= @v_total %>%">
+            <%= @v_total %>%
+          </div>
+        </div>
+        <p><strong>Number of Meters: <%= @total_meters %></strong></p>
       </div>
     </div>
 
@@ -25,15 +31,14 @@
     <div class="jumbotron">
       <% @arr.uniq.each do |k,m| %>
         <% %>
-        <div class="panel panel-default text-center">
-          <div class="panel-heading">
-            <h3><%= k %></h3><button class="btn btn-sm"><%=link_to 'Enter Read', building_meter_path(@building,@id) %></button>
-            <h3>meter is located: <%= @meter_location[0][0] =%></h3>
-          </div>                                          
-          <div class="panel-body" align="justify-content-center">
-           <button class="btn btn-lg"><%= will_paginate @arr, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'justify-content-center', :outer_window => 0, :page_links => false %></button>
-          </div>       
-        </div>  
+        <h3><%= k %></h3>
+        <hr class="extra-margins my-5">
+        <h5>meter is located: <%= @meter_location[0][0] =%></h5>
+        <hr class="extra-margins my-5">
+        <button class="btn btn-lg"><%= link_to 'Edit', edit_building_meter_path(@building,@id) %></button> 
+        <button class="btn btn-lg"><%= link_to 'Enter Read', building_meter_path(@building,@id) %></button>
+        <hr class="extra-margins my-5">
+        <%= will_paginate @arr, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'justify-content-center', :outer_window => 0, :page_links => false %>
       <% end %>   
     </div>
 

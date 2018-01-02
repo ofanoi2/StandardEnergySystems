@@ -4,6 +4,6 @@ class Workday < ApplicationRecord
 
    #default_scope {order title: :asc}
    
-   scope :get_completed_count, ->(value){where("completed = :value", value: value).count}
+   scope :get_completed_count, ->{where("completed = true").count}
 
 end

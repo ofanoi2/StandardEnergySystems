@@ -15,11 +15,16 @@ class BuildingsController < ApplicationController
 	  # @meter = @building.meters.where("meter_number in (:meter_number)",meter_number: @meter_number).paginate(page: params[:page], per_page: 1)
 	  # @meter_id = @building.meters.distinct.pluck(:id)
 	  @arr.each do |key|
+	  	@k = key
 	  	@id = @building.meters.where("sequence_number is not null and meter_number = :meter_number", meter_number: key).pluck(:id) 
 	  	@meter_location = @building.meters.distinct.where("sequence_number is not null and meter_number = :meter_number", meter_number: key).pluck(:meter_location, :sequence_number )
 	  end
 	  @page = @workday.buildings.pluck(:building_number)
 	  @v_page = (@page.index(@building.building_number)+1)+1 
+	  @total_meters = Meter.get_count_meters_per_building(@building.id)
+	  @v_total = Meter.get_count_meters_readings_entered(@k,@building.id)
+	  @v_total /= @total_meters.to_f*100
+	  
 	end
 
 	def edit

@@ -1,27 +1,56 @@
 <% provide(:title, "Meter") %>
-<div>
+<div class="container">
     <%= form_for( [@building,@building.meters.new] ) do |f| %>
+	    <% if @meter.errors.any? %>
+	      <div>
+	        <div class="alert alert-danger"><%= pluralize(@meter.errors.count, "error") %> prohibited this meter reading from being saved.</div>
+	        <ul>
+	          <% @meter.errors.full_messages.each do |msg| %>
+	          <li><%= msg %></li>
+	          <% end %>
+	        </ul>
+	      </div>
+	    <% end %>
 	    <div class="row">
-		    <div class="field">
-		        <%= f.label :meter_number %><br>
-		        <%= f.text_field :meter_number, :value => @meter.meter_number %>
+	    	<div class="col-sm-3">
+			    <div class="field">
+			        <%= f.label :meter_number %><br>
+			        <%= f.text_field :meter_number, :value => @meter.meter_number %>
+			    </div>
+			    <div class="field">
+			        <%= f.label :previous_read %><br>
+			        <%= f.hidden_field :previous_read, :value => @v_pre_read %>
+			    </div>
+			    <div class="field">
+			        <%= f.label :current_read %><br>
+			        <%= f.number_field :current_read %>
+			    </div>   
+ 			    <% if @meter.demand_yn? %>
+ 			        <div class="field">
+				        <%= f.label :demand_yn %><br>
+				        <%= f.check_box :demand_yn, :checked => @meter.demand_yn %>
+				        <div class="field reveal-if-active">
+				            <%= f.label :current_read_demand %><br>
+				            <%= f.number_field :current_read_demand, step: :any %>	
+			            </div>	        
+			        </div>  
+			    <% else %> 
+ 				<% end %> 
 		    </div>
-		    <div class="field">
-		        <%= f.label :previous_read %><br>
-		        <%= f.hidden_field :previous_read, :value => @v_pre_read %>
+		    <div class="col-sm-3">
+		    	<div class="field">
+		    		<%= f.label :noread_yn %>
+		    		<%= f.check_box :noread_yn %>
+		    	</div>
+		    	<div class="field">
+		    		<%= f.label :noread_description %>
+		    		<%= f.select(:noread_description, @noread_options)  %>
+		    	</div>
 		    </div>
-		</div>
-	    <div class="field">
-	        <%= f.label :current_read %><br>
-	        <%= f.number_field :current_read %>
-	    </div>   
-	    <div class="field">
-	        <%= f.label :current_read_demand %><br>
-	        <%= f.number_field :current_read_demand, :disable => "if #{@meter.demand_yn} == f" %>
-	    </div>    
-	    <div class="actions">
-	        <%= f.submit "Submit", class: "actions" %> 
 	    </div>
+	    <div class="actions">
+		    <%= f.submit "Submit", class: "actions" %> 
+		</div>
     <% end %>   
 </div>
 

@@ -1,0 +1,2 @@
+class Noread < ApplicationRecord
+end
