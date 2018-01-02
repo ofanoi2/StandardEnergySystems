@@ -14227,22 +14227,22 @@
 # ]
 
 Noread.create! [
-  # { description: "Meter Missing"},
-  # { description: "Read Quaterly"},
-  # { description: "Meter Blocked or Covered. Please Contact Tenant"},
-  # { description: "Locked Door, No Key"},
-  # { description: "Vacant Space, No Access"},
-  # { description: "Maintenance Person Not Available"},
-  # { description: "Meter out of Order"},
-  # { description: "Closed during meter reading hours"},
-  # { description: "Meter Disconnected"},
-  # { description: "Meter Flashing HELP"},
-  # { description: "Meter Running Backwards"},
-  # { description: "Meter Not Installed"},
-  # { description: "Unable to Locate"},
-  # { description: "Management to provide reading"},
-  # { description: "Water Meter in manhole"},
-  # { description: "City Water Meter"},
-  # { description: "Meter Not Reporting"}
+  { description: "Meter Missing"},
+  { description: "Read Quaterly"},
+  { description: "Meter Blocked or Covered. Please Contact Tenant"},
+  { description: "Locked Door, No Key"},
+  { description: "Vacant Space, No Access"},
+  { description: "Maintenance Person Not Available"},
+  { description: "Meter out of Order"},
+  { description: "Closed during meter reading hours"},
+  { description: "Meter Disconnected"},
+  { description: "Meter Flashing HELP"},
+  { description: "Meter Running Backwards"},
+  { description: "Meter Not Installed"},
+  { description: "Unable to Locate"},
+  { description: "Management to provide reading"},
+  { description: "Water Meter in manhole"},
+  { description: "City Water Meter"},
+  { description: "Meter Not Reporting"}
   { description: "  "}
 ]
