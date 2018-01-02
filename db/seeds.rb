@@ -10,7 +10,7 @@
 # Workday.destroy_all
 # Building.destroy_all
 # Meter.destroy_all
-# Noread.destroy_all
+Noread.destroy_all
 
 # User.create! [	
 #   { name: "Oluseye Fanoiki", email: "oluseye@standardenergysystems.com", password: "abc1234#", user_role: "1" },
