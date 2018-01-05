@@ -1,0 +1,296 @@
+/* line 9, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.primary-color {
+  background-color: #4285F4 !important;
+}
+
+/* Necessary for full page carousel*/
+/* line 27, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.full-height,
+.full-height body,
+.full-height header,
+.full-height header .view,
+.full-height body .view {
+  height: 100%;
+}
+
+@media (max-width: 1080px) {
+  /* line 36, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+  .full-height,
+  .full-height body,
+  .full-height header,
+  .full-height header .view,
+  .full-height body .view {
+    height: 700px;
+  }
+}
+@media (min-width: 1080px) and (max-width: 2440px) {
+  /* line 46, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+  .full-height,
+  .full-height body,
+  .full-height header,
+  .full-height header .view,
+  .full-height body .view {
+    height: 770px;
+  }
+}
+/* line 55, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.navbar {
+  background-color: transparent;
+}
+
+/* line 58, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* line 66, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* line 74, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* line 77, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* line 80, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+main {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+/* line 84, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.extra-margins {
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+/* line 88, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.scrolling-navbar {
+  -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
+  -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
+  transition: background .5s ease-in-out, padding .5s ease-in-out;
+}
+
+/* line 94, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.top-nav-collapse {
+  background-color: #1C2331;
+}
+
+/* line 98, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+footer.page-footer {
+  background-color: #1C2331;
+  margin-top: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  /* line 104, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+  .navbar {
+    background-color: #1C2331;
+  }
+}
+/* Carousel*/
+/* line 111, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.flex-center {
+  color: #fff;
+}
+
+/* line 115, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.carousel-caption {
+  height: 100%;
+  padding-top: 7rem;
+}
+
+/* line 119, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.navbar .btn-group .dropdown-menu a:hover {
+  color: #000 !important;
+}
+
+/* line 122, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.navbar .btn-group .dropdown-menu a:active {
+  color: #fff !important;
+}
+
+/* line 126, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.reveal-if-active {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: scale(0.8);
+  transition: 0.5s;
+}
+/* line 132, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+input[type="radio"]:checked ~ .reveal-if-active, input[type="checkbox"]:checked ~ .reveal-if-active {
+  opacity: 1;
+  max-height: 100px;
+  overflow: visible;
+  padding: 10px 20px;
+  transform: scale(1);
+}
+
+/* footer */
+/* line 145, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+footer.page-footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  background-color: #3b3b3f;
+  color: #fff;
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+/* line 150, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+footer.page-footer .container-fluid {
+  width: auto;
+}
+/* line 157, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+footer.page-footer .footer-copyright {
+  overflow: hidden;
+  height: 50px;
+  line-height: 50px;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(187, 187, 187, 0.2);
+  text-align: center;
+  font-size: 0.9rem;
+}
+/* line 166, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+footer.page-footer a {
+  color: #555;
+}
+/* line 168, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+footer.page-footer a:hover {
+  color: #222;
+}
+/* line 172, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+footer.page-footer .title {
+  text-transform: uppercase;
+}
+/* line 175, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+footer.page-footer .call-to-action {
+  text-align: center;
+  padding-top: 1.3rem;
+  padding-bottom: 0.5rem;
+}
+/* line 179, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+footer.page-footer .call-to-action ul li {
+  display: inline-block;
+  padding-right: 10px;
+}
+/* line 185, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+footer.page-footer .social-section ul li {
+  display: inline-block;
+}
+/* line 189, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+footer.page-footer .social-section ul a {
+  margin-left: 0;
+  padding-left: 0;
+}
+/* line 195, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+footer.page-footer small {
+  float: left;
+}
+/* line 198, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+footer.page-footer ul {
+  float: right;
+  list-style: none;
+}
+/* line 201, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+footer.page-footer ul li {
+  float: left;
+  margin-left: 15px;
+}
+
+/* gravatar */
+/* line 210, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+/* line 215, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+/* note */
+/* line 220, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.note-title {
+  font: bold 12px arial, sans-serif;
+}
+
+/* line 221, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.note {
+  background: lightgray;
+  margin: 15px;
+  padding: 5px;
+  border: 1px;
+  border-radius: 5px;
+  width: 300px;
+}
+
+/* line 229, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+.actions {
+  margin: 10px 0px;
+}
+
+/* sidebar */
+/* line 235, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+aside section.user_info {
+  margin-top: 20px;
+}
+/* line 238, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+aside section {
+  padding: 10px 0;
+  margin-top: 20px;
+}
+/* line 241, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+aside section:first-child {
+  border: 0;
+  padding-top: 0;
+}
+/* line 245, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+aside section span {
+  display: block;
+  margin-bottom: 3px;
+  line-height: 1;
+}
+/* line 250, /Users/oluseyefanoiki/Documents/RailsApp/StandardEnergySystems/app/assets/stylesheets/custom.scss */
+aside section h1 {
+  font-size: 1.4em;
+  text-align: left;
+  letter-spacing: -1px;
+  margin-bottom: 3px;
+  margin-top: 0px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+

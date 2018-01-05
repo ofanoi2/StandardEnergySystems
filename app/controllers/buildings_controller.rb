@@ -2,12 +2,14 @@ class BuildingsController < ApplicationController
 	
 	before_action :admin_user , only: [:show, :edit, :delete]
 	before_action :set_workday
+
+	
 	
 
 	def show
 	  @building = @workday.buildings.find(params[:id])	
 	  @meter_number = @building.meters.distinct.pluck(:meter_number, :sequence_number)
-	  @arr = []
+	  @arr = Array.new
 	  @meter_number.each do |key,variable|
 	  	@arr<<key
 	  end
@@ -15,9 +17,10 @@ class BuildingsController < ApplicationController
 	  # @meter = @building.meters.where("meter_number in (:meter_number)",meter_number: @meter_number).paginate(page: params[:page], per_page: 1)
 	  # @meter_id = @building.meters.distinct.pluck(:id)
 	  @arr.each do |key|
-	  	@k = key
-	  	@id = @building.meters.where("sequence_number is not null and meter_number = :meter_number", meter_number: key).pluck(:id) 
-	  	@meter_location = @building.meters.distinct.where("sequence_number is not null and meter_number = :meter_number", meter_number: key).pluck(:meter_location, :sequence_number )
+	  	@meter = @building.meters.where("sequence_number is not null and meter_number = :meter_number", meter_number: key).limit(1).to_a
+	  	@id = @meter[0]
+	  	@v_pre_read = Meter.get_previous_read(key, params[:id])[0]
+	  	#@meter_location = Meter.get_meter_location(meter_number: key)
 	  end
 	  @page = @workday.buildings.pluck(:building_number)
 	  @v_page = (@page.index(@building.building_number)+1)+1 
@@ -25,6 +28,9 @@ class BuildingsController < ApplicationController
 	  @v_total = Meter.get_count_meters_readings_entered(@k,@building.id)
 	  @v_total /= @total_meters.to_f*100
 	  
+	  
+      
+      @noread_options = Noread.all.map { |e| [e.description,e.id] }
 	end
 
 	def edit

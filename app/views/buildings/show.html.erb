@@ -1,50 +1,95 @@
 <% provide(:title, "Building") %>
-<div class="row">
-  
-  <div class="col-sm-4">
+<div class="container">
+  <div class="row">
     
-    <div class="panel panel-default text-center">
-      <div class="panel-heading">
-        <h1><%= @building.building_name %></h1>
-        <button class="btn btn-lg"><%= link_to 'Edit', edit_workday_building_path(@workday) %></button> 
-        <% if @v_page > @page.length %>
-          <button class="btn btn-lg"><%= link_to 'Back', "/workdays/#{@building.workday_id}"  %></button>
-        <% else %>
-          <button class="btn btn-lg"><%= link_to 'Back', "/workdays/#{@building.workday_id}?page=#{@v_page}"  %></button>
-        <% end %>  
-      </div>
-      <div class="panel-body">Status
-    		<p><strong>Complete: <%= @workday.complete %></strong></p>
-        <div class="progress"><strong>Progress</strong>
-          <div class="progress-bar" role="progressbar" aria-valuenow="#{@v_total}" aria-valuemin="0" aria-valuemax="100" style="width:<%= @v_total %>%">
-            <%= @v_total %>%
-          </div>
+    <div class="col-sm-4">
+      
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h1><%= @building.building_number %> - <%= @building.building_name %></h1>
+<!--           <button class="btn btn-lg"><%= link_to 'Edit', edit_workday_building_path(@workday) %></button>  -->
+          <% if @v_page > @page.length %>
+            <button class="btn btn-lg"><%= link_to 'Back', "/workdays/#{@building.workday_id}"  %></button>
+          <% else %>
+            <button class="btn btn-lg"><%= link_to 'Back', "/workdays/#{@building.workday_id}?page=#{@v_page}"  %></button>
+          <% end %>  
         </div>
-        <p><strong>Number of Meters: <%= @total_meters %></strong></p>
+        <div class="panel-body">Status
+      		<p><strong>Complete: <%= @workday.complete %></strong></p>
+          <div class="progress"><strong>Progress</strong>
+            <div class="progress-bar" role="progressbar" aria-valuenow="#{@v_total}" aria-valuemin="0" aria-valuemax="100" style="width:<%= @v_total %>%">
+              <%= @v_total %>%
+            </div>
+          </div>
+          <p><strong>Number of Meters: <%= @total_meters %></strong></p>
+        </div>
       </div>
+
     </div>
 
-  </div>
+    <div class="col-lg-7">
+      
+      <div class="jumbotron">
+        <% @arr.uniq.each do |k,m| %>
+          <% %>
+          <h3>Meter Number: <%= k %></h3>  
+          <%= form_for ([@building,@id]) do |f| %>  
+            <div>
+              <h4>Meter is located: <%= @meter_location %></h4> 
+              <%= f.label :meter_location %>: <%= f.text_field :meter_location %>
+              <%= f.submit %>
+            </div>
+          <% end %> 
+          <br>   
+          <%= form_for( [@building,@building.meters.new] ) do |f| %>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="field">
+                    <%= f.hidden_field :meter_number, :value => k %> 
+                </div>
+                <div class="field">
+                  <%= f.hidden_field :previous_read, :value => @v_pre_read %> 
+                </div>
+                <div class="field inline">
+                    <%= f.label :current_read %>: <%= f.number_field :current_read, :inputmode => "numeric", :pattern => "[0-9]*" %>
+                </div>   
+                <% if @meter[15]  %>
+                    <div class="field inline">
+                      <%= f.label :demand_yn %><br>
+                      <%= f.check_box :demand_yn, :checked => @meter[15] %>
+                      <div class="field reveal-if-active">
+                          <%= f.label :current_read_demand %><br>
+                          <%= f.number_field :current_read_demand, step: :any %>  
+                        </div>          
+                    </div>  
+                <% else %> 
+                <% end %>               
+                <div class="field">
+                  <%= f.label :noread_yn %>:
+                  <%= f.check_box :noread_yn %>
+                </div>
+                <div class="field inline">
+                  <%= f.label :noread_description %>: <%= f.select(:noread_description, @noread_options) %>
+                </div>
+              </div>
+            </div>
 
-  <div class="col-lg-5">
-    
-    <div class="jumbotron">
-      <% @arr.uniq.each do |k,m| %>
-        <% %>
-        <h3><%= k %></h3>
-        <hr class="extra-margins my-5">
-        <h5>meter is located: <%= @meter_location[0][0] =%></h5>
-        <hr class="extra-margins my-5">
-        <button class="btn btn-lg"><%= link_to 'Edit', edit_building_meter_path(@building,@id) %></button> 
-        <button class="btn btn-lg"><%= link_to 'Enter Read', building_meter_path(@building,@id) %></button>
-        <hr class="extra-margins my-5">
-        <%= will_paginate @arr, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'justify-content-center', :outer_window => 0, :page_links => false %>
-      <% end %>   
+
+            
+            <div class="actions">
+              <%= f.submit "Enter", class: "actions" %> 
+            </div>
+          <% end %> 
+          <hr class="extra-margins my-5">
+          <%= will_paginate @arr, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'justify-content-center', :outer_window => 0, :page_links => false %>
+        <% end %>   
+      </div>
+
     </div>
+  </div>  
+</div>
 
-  </div>
-
-</div>  
+<!-- <button class="btn btn-lg"><%= link_to 'Edit', edit_building_meter_path(@building,@id) %></button>  -->
 
 <!-- workday_path(@workday) -->
 <!--                <input class="form-control" id="current_read" name="current_read" placeholder=" " type="Integer" required>  -->

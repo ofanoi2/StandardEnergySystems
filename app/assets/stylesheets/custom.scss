@@ -1,5 +1,8 @@
 @import "bootstrap-sprockets";
 //@import "bootstrap";
+@import "bootstrap.min";
+//@import "mdb";
+//@import "mdb.min";
 
 // Colors
 $black: #bbb;
@@ -47,13 +50,69 @@ $footer-insta-photos-margin: 4px;
 .dropdown:hover .dropdown-content {
   display: block;
 }
-main {
-  padding-top: 3rem;
-  padding-bottom: 2rem;
+
+
+/* Necessary for full page carousel*/
+
+.full-height,
+.full-height body,
+.full-height header,
+.full-height header .view, 
+.full-height body .view {
+    height: 100%; 
+} 
+
+@media (max-width: 1080px) {
+    .full-height,
+    .full-height body,
+    .full-height header,
+    .full-height header .view,
+    .full-height body .view {
+        height: 700px; 
+    } 
 }
-.extra-margins {
-  margin-top: 1rem;
-  margin-bottom: 2.5rem;
+
+@media (min-width: 1080px) and (max-width: 2440px) {
+    .full-height,
+    .full-height body,
+    .full-height header,
+    .full-height header .view,
+    .full-height body .view {
+        height: 770px; 
+    } 
+}
+
+.scrolling-navbar {
+    -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
+    -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
+    transition: background .5s ease-in-out, padding .5s ease-in-out;
+}
+
+.top-nav-collapse {
+    background-color: #1C2331;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #1C2331;
+    }
+}
+
+/* Carousel*/
+
+.flex-center {
+    color: #fff;
+}
+
+.carousel-caption {
+    height: 100%;
+    padding-top: 7rem;
+}
+.navbar .btn-group .dropdown-menu a:hover {
+    color: #000 !important;
+}
+.navbar .btn-group .dropdown-menu a:active {
+    color: #fff !important;
 }
 
 .reveal-if-active {

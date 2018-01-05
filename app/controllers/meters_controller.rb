@@ -4,8 +4,7 @@ class MetersController < ApplicationController
 	before_action :set_workday, :set_building, :set_building_id, :set_building_number,:set_meter_number #, :set_meter_id
 
   def show
-  	@meter = @building.meters.find(params[:id])
-    @v_pre_read = Meter.get_previous_read(@meter.meter_number, params[:building_id])[0]
+    @meter = @building.meters.find(params[:id])
     @noread_options = Noread.all.map { |e| [e.description,e.id] }
   end
 
@@ -29,11 +28,11 @@ class MetersController < ApplicationController
     # @count = Building.includes("meters").where("id < :id and sequence_number is not null", id: @id[0]).order("sequence_number").count
      
     if @meter.save
+      @page = ((@building_number.index(@building_id[0])+1)/1)+1
+      @current_page = ((@building_number.index(@building_id[0])+1)/1)
       if @meter_number.flatten.uniq.index("#{@meter.meter_number}") == 0 && @meter_number.flatten.uniq.length == 3
-        @page = ((@building_number.index(@building_id[0])+1)/1)+1
         redirect_to "/workdays/#{@workday[0]}?page=#{@page}" 
       elsif @meter_number.flatten.uniq.index("#{@meter.meter_number}") == @meter_number.length
-        @page = ((@building_number.index(@building_id[0])+1)/1)+1
         redirect_to "/workdays/#{@workday[0]}?page=#{@page}" 
       else        
         flash[:success] = 'Read was successfully added.'
@@ -43,13 +42,13 @@ class MetersController < ApplicationController
     else
       if @meter.errors.any?
         @meter.errors.full_messages.each do |msg| 
-          flash[:danger] = "Unable to add read! Please reread!" + 
-                             @meter.errors.count.to_s + "errors prohibited this meter reading from being saved" + 
-                                msg
+          flash[:danger] = "Unable to add read! Please reread!" 
+          flash[:alert] = @meter.errors.count.to_s + "errors prohibited this meter reading from being saved" 
+          flash[:warning] = msg
         end
       end
       # @page = ((@meter_number.flatten.uniq.index("#{@meter.meter_number}")+1)/1)
-      redirect_to "/buildings/#{@building_id[0]}/meters/#{@v_meter_id}"
+      redirect_to "/workdays/#{@workday[0]}/buildings/#{@building_id[0]}?page=#{@page}"
     end
 
   end
@@ -97,6 +96,6 @@ class MetersController < ApplicationController
     end 
 
     def meter_params
-      params.require(:meter).permit(:meter_number, :current_read, :previous_read, :current_read_demand, :demand_yn, :noread_yn, :noread_description)
+      params.require(:meter).permit(:meter_number, :current_read, :previous_read, :current_read_demand, :noread_yn, :noread_description)
     end 
 end

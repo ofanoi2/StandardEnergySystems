@@ -15,7 +15,11 @@ class Meter < ApplicationRecord
 
   validates :current_read_demand, presence: true, if: :demand_yn? ,format: { with: /\A\d+(?:\.\d{2})?\z/ }, numericality: { greater_than: 0, less_than: 1000 }
 
+  scope :get_meter_location, ->(meter_number){unscoped.where("sequence_number is not null and meter_number = :meter_number", meter_number: meter_number).pluck(:meter_location)}
+  
   scope :get_previous_read, ->(meter_number, building_id){unscoped.where("meter_number = :meter_number and building_id = :building_id", meter_number: meter_number, building_id: building_id ).order(created_at: :desc).pluck(:current_read)}
+
+  # scope :get_difference, ->(meter_number, building_id){unscoped.where("meter_number = :meter_number and building_id = :building_id", meter_number: meter_number, building_id: building_id ).order(created_at: :desc).select("(previous_read - current_read) as difference")}
 
   scope :get_meter_id, ->(meter_number, building_id){unscoped.where("meter_number = :meter_number and building_id = :building_id", meter_number: meter_number, building_id: building_id ).order(created_at: :asc).pluck(:id)}
 
@@ -31,11 +35,17 @@ class Meter < ApplicationRecord
     self.demand_yn
   end
 
+  def self.with_difference
+    select("(current_read - previous_read) as difference")
+  end
+
   def check_current_read_value
     if current_read.nil?
       errors.add(:current_read, " cannot be null values!")
     elsif current_read < previous_read
       errors.add(:current_read, " is less than previous read. Please check read!")
+    elsif (current_read - previous_read) < self.with_difference
+      errors.add("Check again")
     end   
   end
 

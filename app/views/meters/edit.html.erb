@@ -1,8 +1,7 @@
 <% provide(:title, "Edit Meter") %>
 <div class="container">
 	<h1>Update Meter</h1>
-	<div class="form-group">
-		<%= form_with scope: :meter, url: edit_building_meter_path, local: true do |form| %>
+
 		  
 		    <% if @building.errors.any? %>
 			    <div id="error_explanation">

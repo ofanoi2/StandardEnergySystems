@@ -1,154 +1,145 @@
+
+
+  <!--Carousel Wrapper-->
+  <div id="video-carousel-example2" class="carousel slide carousel-fade" data-ride="carousel">
+      <!--Indicators-->
+      <ol class="carousel-indicators">
+          <li data-target="#video-carousel-example2" data-slide-to="0" class="active"></li>
+          <li data-target="#video-carousel-example2" data-slide-to="1"></li>
+          <li data-target="#video-carousel-example2" data-slide-to="2"></li>
+      </ol>
+      <!--/.Indicators-->
+
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+          <!--First slide-->
+          <div class="carousel-item active">
+              <!--Mask color-->
+              <div class="view hm-black-light">
+
+                  <!--Video source-->
+                  <video class="video-full" autoplay loop>
+                      <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />
+                  </video>
+                  <div class="full-bg-img"></div>
+              </div>
+
+              <!--Caption-->
+              <div class="carousel-caption">
+                  <div class="flex-center animated fadeIn">
+                      <ul>
+                          <li>
+                            <h1 class="h1-responsive">Material Design for Bootstrap 4</h1></li>
+                          <li>
+                            <p>The most powerful and free UI KIT for Bootstrap</p>
+                          </li>
+                          <li>
+                            <a target="_blank" href="https://mdbootstrap.com/getting-started/" class="btn btn-primary btn-lg" rel="nofollow">Sign up!</a>
+                            <a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-default btn-lg" rel="nofollow">Learn more</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              <!--Caption-->
+          </div>
+          <!--/First slide-->
+      </div>
+      <!--/.Slides-->
+
+      <!--Controls-->
+      <a class="carousel-control-prev" href="#video-carousel-example2" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#video-carousel-example2" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+      </a>
+      <!--/.Controls-->
+  </div>
+  <!--/.Carousel Wrapper-->
+
+
 <div class="container">
-    
-    <!--First row-->
-    <div class="row wow fadeIn" data-wow-delay="0.2s">
-        <div class="col-lg-7">
-            <!--Featured image -->
-            <div class="view overlay hm-white-light z-depth-1-half">
-                <img src="https://mdbootstrap.com/img/Photos/Slides/img%20%2877%29.jpg" class="img-fluid " alt="">
-                <div class="mask"></div>
-            </div>
-            <br>
-        </div>
+  <h1 class="my-4">Welcome to Modern Business</h1>
 
-        <!--Main information-->
-        <div class="col-lg-5">
-            <h2 class="h2-responsive font-bold">We are professionals</h2>
-            <hr>
-            <p>Welcome to the home page of Standard Energy Systems, home for energy management and billing purposes.</p>
-            <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  <!-- Marketing Icons Section -->
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card">
+        <h4 class="card-header">Card Title</h4>
+        <div class="card-body">
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
         </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
     </div>
-
-    <hr class="extra-margins my-5">
-
-    <!--Second row-->
-    <div class="row pt-4">
-        <!--First columnn-->
-        <div class="col-lg-4">
-            <!--Card-->
-            <div class="card wow fadeIn" data-wow-delay="0.4s">
-
-                <!--Card image-->
-                <img class="img-fluid" src="http://www.bavariannews.com/wp-content/uploads/2015/12/meter-reading-2.jpg" alt="Card image cap">
-
-                <!--Card content-->
-                <div class="card-body">
-                    <!--Title-->
-                    <h4 class="card-title text-center">Meter Reading/Billing</h4>
-                    <hr>
-                    <!--Text-->
-                    <p class="card-text">We provide automated or manual electric, water, gas and steam meter reading.</p>
-                </div>
-
-            </div>
-            <!--/.Card-->
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100">
+        <h4 class="card-header">Card Title</h4>
+        <div class="card-body">
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
         </div>
-        <!--First columnn-->
-
-        <!--Second columnn-->
-        <div class="col-lg-4">
-            <!--Card-->
-            <div class="card wow fadeIn" data-wow-delay="0.6s">
-
-                <!--Card image-->
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20(21).jpg" alt="Card image cap">
-
-                <!--Card content-->
-                <div class="card-body">
-                    <!--Title-->
-                    <h4 class="card-title text-center">Meter Install</h4>
-                    <hr>
-                    <!--Text-->
-                    <p class="card-text">We Install electric and water meter.</p>
-                </div>
-
-            </div>
-            <!--/.Card-->
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary">Learn More</a>
         </div>
-        <!--Second columnn-->
-
-        <!--Third columnn-->
-        <div class="col-lg-4">
-            <!--Card-->
-            <div class="card wow fadeIn" data-wow-delay="0.8s">
-
-                <!--Card image-->
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20(12).jpg" alt="Card image cap">
-
-                <!--Card content-->
-                <div class="card-body">
-                    <!--Title-->
-                    <h4 class="card-title text-center">Meter Diagnosis</h4>
-                    <hr>
-                    <!--Text-->
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-
-            </div>
-            <!--/.Card-->
-        </div>
-        <!--Third columnn-->
-
+      </div>
     </div>
-    <!--/.Second row-->
-
-    <hr class="extra-margins my-5">
-
-    <!--Third row-->
-
-    <div class="container-fluid">
-        <div class="text-center">
-            <h3>Pricing</h3>
-            <h4>Choose a payment plan that works for you</h4>
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100">
+        <h4 class="card-header">Card Title</h4>
+        <div class="card-body">
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
         </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="panel panel-default text-center">
-                    <div class="panel-heading">
-                        <h1>Basic</h1>
-                    </div>
-                    <div class="panel-body">
-
-                    </div>
-                    <div class="panel-footer">
-                       <h3>$19</h3>
-                       <h4>per month</h4>
-                       <button class="btn btn-lg"><%= link_to 'Sign Up', '/signup' %></button>
-                    </div>
-                </div> 
-            </div> 
-            <div class="col-sm-4">
-                <div class="panel panel-default text-center">
-                    <div class="panel-heading">
-                        <h1>Pro</h1>
-                     </div>
-                    <div class="panel-body">
-
-                    </div>
-                    <div class="panel-footer">
-                        <h3>$29</h3>
-                        <h4>per month</h4>
-                        <button class="btn btn-lg"><%= link_to 'Sign Up', '/signup' %></button>
-                    </div>
-                </div> 
-            </div> 
-            <div class="col-sm-4">
-                <div class="panel panel-default text-center">
-                    <div class="panel-heading">
-                        <h1>Premium</h1>
-                    </div>
-                    <div class="panel-body">
-
-                    </div>
-                    <div class="panel-footer">
-                        <h3>$49</h3>
-                        <h4>per month</h4>
-                        <button class="btn btn-lg"><%= link_to 'Sign Up', '/signup' %></button>
-                    </div>
-                </div> 
-            </div> 
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary">Learn More</a>
         </div>
-    </div> 
-
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
 </div>
+
+<footer class="footer page-footer center-on-small-only">
+
+  <!--Footer links-->
+  <div class="container-fluid">
+    <div class="row">
+
+      <!--First column-->
+      <div class="col-lg-7 col-md-6 ml-auto">
+        <h5 class="title mb-3"><strong>About Standard Energy Systems</strong></h5>
+          <p>Since 1989, Standard Energy Systems, Inc. formerly Intella Systems has been the leader in electric, water and gas submetering. We offer a wide range of products that are affordable for any size customer. From power line carrier, radio frequency, hardwired systems, modem and internet communications, we do it all.
+          </p>
+      </div>
+      <!--/.First column-->
+      <hr class="w-100 clearfix d-sm-none">
+      <!--Second column-->
+      <div class="col-lg-2 col-md-6 ml-auto">
+        <h5 class="title mb-3"><strong></strong></h5>
+        <ul>
+          <li>
+            <a href="/about">About Us</a>
+          </li>
+          <li>
+            <a href="/contact">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+        <!--/.Second column-->
+    </div>
+  </div>
+  <!--/.Footer links-->
+
+  <div class="container-fluid bg-grey">
+  </div>
+
+  <!--Copyright-->
+  <div class="footer-copyright">
+      <div class="container-fluid">© 2017 Copyright:<p><a href="#"> StandardEnergySystems</a></p></div>
+  </div>
+  <!--/.Copyright-->
+
+</footer>
