@@ -1,94 +1,79 @@
 <% provide(:title, "Building") %>
-  <div class="row">
-    
-    <div class="col-sm-3">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1><%= @building.building_number %> - <%= @building.building_name %></h1>
-          <button class="btn btn-lg"><%= link_to 'Back', "/workdays/#{@building.workday_id}"  %></button> 
-        </div>
-        <div class="panel-body">
-          <strong>Status</strong><br>
-          Total Meters in Building: <%= @v_tm  %><br>
-          Progress: <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="#{@v_t}" aria-valuemin="0" aria-valuemax="100" style="width:<%= @v_t %>%">
-              <%= @v_t %>%
-            </div>
-          </div>
-        </div>
+<div class="row">
+  
+  <div class="col-sm-3">
+    <strong>Building Info</strong><br>
+    Total Meters in Building: <%= @v_tm  %><br>
+    Progress: <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="#{@v_t}" aria-valuemin="0" aria-valuemax="100" style="width:<%= @v_t %>%">
+        <%= @v_t %>%
       </div>
     </div>
-
-    <div class="col-lg-7">
-
-      <div class="jumbotron">
-
-        <% @meter.as_json.each do |m| %>
-
-          <% @v_mn = Meter.get_meter_number(m["id"],m["building_id"])[0] %>
-          <% @v_pr = Meter.get_previous_read(@v_mn,m["building_id"])[0] %>
-          
-          <h2><strong>Meter Number: <%= @v_mn %></strong></h2>  
-          <h3><%= m["meter_location"] %></h3> 
-          <%= form_for edit_building_meter_path(m["building_id"],m["id"]) do |f| %>  
-            <div class="control-group form-group">
-              <div class="controls">
-                <h3><strong><%= f.label :meter_location %>:</strong></h3> <%= f.text_area :meter_location, :cols => "10", :rows => "3", :class => "form-control" %> 
-                <br>
-                <%= f.submit :value => "Update Location" %>
-              </div>
-            </div>
-          <% end %> 
-          <br>
-          <%= form_for( [@building,@building.meters.new] ) do |f| %>
-            <div class="row">
-              <div class="col-sm-12">
-                 <div class="field">
-                  <%= f.hidden_field :meter_number, :value => @v_mn  %> 
-                </div>
-                <div class="field">
-                  <%= f.hidden_field :previous_read, :value => @v_pr %> 
-                </div> 
-                <div class="field">
-                  <%= f.hidden_field :building_id, :value => m["building_id"] %> 
-                </div>                 
-                <div class="field inline">
-                  <h2><%= f.label :current_read %>: <%= f.number_field :current_read, :inputmode => "numeric", :pattern => "[0-9]*" %></h2>
-                </div>   
-                <% if m["demand_yn"]  %>
-                    <div class="field inline">
-                      <%= f.label :demand_yn %><br>
-                      <%= f.check_box :demand_yn, :checked => m["demand_yn"] %>
-                      <div class="field reveal-if-active">
-                        <h2><%= f.label :current_read_demand %>: <%= f.number_field :current_read_demand, step: :any, :inputmode => "numeric", :pattern => "[0-9]*" %></h2>  
-                      </div>          
-                    </div>  
-                <% else %> 
-                <% end %>               
-                <div class="field">
-                  <%= f.label :noread_yn %>: <%= f.check_box :noread_yn %>
-                </div>
-                <div class="field inline">
-                  <%= f.label :noread_description %>: <%= f.select(:noread_description, @noread_options) %>
-                </div>
-              </div>
-            </div>
-            
-            <div class="actions">
-              <%= f.submit "Enter", class: "actions" %> 
-            </div>
-          <% end %> 
-
-          <div align="center">
-            <%= will_paginate @meter, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, :page_links => false %>  
-          </div>
-        
-        <% end %>
-        
-
-      </div> 
-      
-
-
-    </div>  
+    <button class="btn btn-lg"><%= link_to 'Back', "/workdays/#{@building.workday_id}"  %></button> 
   </div>
+
+  <div class="col-lg-7">
+
+    <% @meter.as_json.each do |m| %>
+
+      <% @v_mn = Meter.get_meter_number(m["id"],m["building_id"])[0] %>
+      <% @v_pr = Meter.get_previous_read(@v_mn,m["building_id"])[0] %>
+      <h3><strong>Building Number: <%= @building.building_number %></strong></h3>
+      <h3><strong>Building Name: <%= @building.building_name %></strong></h3>
+      <h3><strong>Meter Number: <%= @v_mn %></strong></h3>  
+      <h3><%= m["meter_location"] %></h3> 
+      <%= form_for edit_building_meter_path(m["building_id"],m["id"]) do |f| %>  
+        <div class="control-group form-group">
+          <div class="controls">
+            <h3><strong><%= f.label :meter_location %>:</strong></h3> <%= f.text_area :meter_location, :cols => "10", :rows => "3", :class => "form-control" %> 
+            <br>
+            <%= f.submit :value => "Update Location" %>
+          </div>
+        </div>
+      <% end %> 
+      <%= form_for( [@building,@building.meters.new] ) do |f| %>
+        <div class="row">
+          <div class="col-sm-12">
+             <div class="field">
+              <%= f.hidden_field :meter_number, :value => @v_mn  %> 
+            </div>
+            <div class="field">
+              <%= f.hidden_field :previous_read, :value => @v_pr %> 
+            </div> 
+            <div class="field">
+              <%= f.hidden_field :building_id, :value => m["building_id"] %> 
+            </div>                 
+            <div class="field inline">
+              <h2><%= f.label :current_read %>: <%= f.number_field :current_read, :inputmode => "numeric", :pattern => "[0-9]*" %></h2>
+            </div>   
+            <% if m["demand_yn"]  %>
+                <div class="field inline">
+                  <%= f.label :demand_yn %><br>
+                  <%= f.check_box :demand_yn, :checked => m["demand_yn"] %>
+                  <div class="field reveal-if-active">
+                    <h2><%= f.label :current_read_demand %>: <%= f.number_field :current_read_demand, step: :any, :inputmode => "numeric", :pattern => "[0-9]*" %></h2>  
+                  </div>          
+                </div>  
+            <% else %> 
+            <% end %>               
+            <div class="field">
+              <%= f.label :noread_yn %>: <%= f.check_box :noread_yn %>
+            </div>
+            <div class="field inline">
+              <%= f.label :noread_description %>: <%= f.select(:noread_description, @noread_options) %>
+            </div>
+          </div>
+        </div>
+        
+        <div class="actions">
+          <%= f.submit "Enter", class: "actions" %> 
+        </div>
+      <% end %> 
+
+      <div align="center">
+        <%= will_paginate @meter, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, :page_links => false %>  
+      </div>
+    
+    <% end %>
+  </div>  
+</div>
