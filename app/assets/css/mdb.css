@@ -6561,7 +6561,8 @@ body.scrollable {
   -webkit-transition-duration: .6s;
   transition-duration: .6s;
   -webkit-transition-property: opacity;
-  transition-property: opacity; }
+  transition-property: opacity;
+  width: 1200px }
 
 .carousel-fade .carousel-item.active,
 .carousel-fade .carousel-item-next.carousel-item-left,
