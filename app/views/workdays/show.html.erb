@@ -2,7 +2,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-6">  
-      <h3><%= link_to @workday.title+@workday.workday_type[0]+" Edit", edit_workday_path(@workday) %> | <%= will_paginate @building, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, :page_links => false %></h3>
+      <h3><%= link_to @workday.title+@workday.workday_type[0]+" Edit", edit_workday_path(@workday) %></h3>
       <br>  
       <p><strong>Workday Info</strong></p>
       Complete: <%= @workday.complete %><br>
@@ -11,7 +11,6 @@
       Progress: <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="#{@workday_status_percent}" aria-valuemin="0" aria-valuemax="100" style="width:<%= @workday_status_percent %>"><%= @workday_status_percent %> % complete</div>
       </div>         
-      
       <% @building.each do |b| %>
         <h3 class="h3-responsive"><%= b.building_number %> - <%= link_to b.building_name, [@workday, b] %></h3>
         <p><strong><%= b.building_address %></strong></p>
@@ -39,6 +38,7 @@
           </div>
         <% end %> 
       </div>
+      <%= will_paginate @building, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, :page_links => false %>
     </div>
   </div>
 </div>
