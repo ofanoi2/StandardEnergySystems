@@ -5,17 +5,17 @@ class Meter < ApplicationRecord
 
   attr_accessor :difference
 
-  before_save :set_units, :set_difference
+  # before_save :set_units, :set_difference
 
-  # after_save { self.update(:units => set_units)}
+  # # after_save { self.update(:units => set_units)}
 
-  # scope :get_meter_number, ->(meter_number){where("meter_number = :meter_number", meter_number: meter_number)}
+  # # scope :get_meter_number, ->(meter_number){where("meter_number = :meter_number", meter_number: meter_number)}
 
-  validates :current_read, presence: true, if: :noread_yn?, numericality: { only_integer: true }
+  # validates :current_read, presence: true, if: :noread_yn?, numericality: { only_integer: true }
 
-  validate :check_current_read_value
+  # validate :check_current_read_value
 
-  validates :current_read_demand, presence: true, if: :demand_yn? ,format: { with: /\A\d+(?:\.\d{2})?\z/ }, numericality: { greater_than: 0, less_than: 1000 }
+  # validates :current_read_demand, presence: true, if: :demand_yn? ,format: { with: /\A\d+(?:\.\d{2})?\z/ }, numericality: { greater_than: 0, less_than: 1000 }
 
   scope :get_meter_location, ->(meter_number){unscoped.where("sequence_number is not null and meter_number = :meter_number", meter_number: meter_number).pluck(:meter_location)}
   
