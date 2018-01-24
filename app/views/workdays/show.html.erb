@@ -2,7 +2,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-6">  
-      <h3><%= link_to @workday.title+@workday.workday_type[0]+" Edit", edit_workday_path(@workday)  %></h3>
+      <h3><%= link_to @workday.title+@workday.workday_type[0]+" Edit", edit_workday_path(@workday) %> | <%= will_paginate @building, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, :page_links => false %></h3>
       <br>  
       <p><strong>Workday Info</strong></p>
       Complete: <%= @workday.complete %><br>
@@ -15,10 +15,6 @@
       <% @building.each do |b| %>
         <h3 class="h3-responsive"><%= b.building_number %> - <%= link_to b.building_name, [@workday, b] %></h3>
         <p><strong><%= b.building_address %></strong></p>
-        <hr class="my-2">
-        <div align="center">
-          <%= will_paginate @building, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, :page_links => false %>  
-        </div>     
       <% end %>   
       <hr class="extra-margins my-5">
       <div class="Route">
