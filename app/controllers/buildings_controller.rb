@@ -32,6 +32,9 @@ class BuildingsController < ApplicationController
       @noread_options = Noread.all.map { |e| [e.description,e.id] }
 
       @v_tm = Meter.get_count_meters_per_building(params[:id])
+      @v_t = Meter.get_count_meters_readings_entered(params[:id])
+	  @v_t /= @v_tm.to_f*100
+
 	end
 
 	def edit
