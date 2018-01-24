@@ -1,23 +1,25 @@
 <% provide(:title, "WorkDay") %>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-5">
+    <div class="col-lg-6">  
+      <h3><%= link_to @workday.title+@workday.workday_type[0]+" Edit", edit_workday_path(@workday)  %></h3>
+      <br>  
+      <p><strong>Workday Info</strong></p>
+      Complete: <%= @workday.complete %><br>
+      Total Buildings: <%= @workday_total %><br>
+      <%= @workday_status %>;<%= @workday_status_percent %><br>
+      Progress: <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="#{@workday_status_percent}" aria-valuemin="0" aria-valuemax="100" style="width:<%= @workday_status_percent %>"><%= @workday_status_percent %> % complete</div>
+      </div>         
       
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <button class="btn btn-lg"><h1><%= link_to @workday.title+@workday.workday_type[0], edit_workday_path(@workday)  %></h1></button>  
-        </div>
-        <div class="panel-body">
-          <p></p>
-          <p><strong>Workday Status</strong></p>
-      		Complete: <%= @workday.complete %><br>
-          Total Buildings: <%= @workday_total %><br>
-          <%= @workday_status %>;<%= @workday_status_percent %><br>
-          Progress: <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="#{@workday_status_percent}" aria-valuemin="0" aria-valuemax="100" style="width:<%= @workday_status_percent %>"><%= @workday_status_percent %> % complete</div>
-          </div>         
-        </div>
-      </div>
+      <% @building.each do |b| %>
+        <h3 class="h3-responsive"><%= b.building_number %> - <%= link_to b.building_name, [@workday, b] %></h3>
+        <p><strong><%= b.building_address %></strong></p>
+        <hr class="my-2">
+        <div align="center">
+          <%= will_paginate @building, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, :page_links => false %>  
+        </div>     
+      <% end %>   
       <hr class="extra-margins my-5">
       <div class="Route">
         <%= content_tag :span, "#{@workday.title}(#{@workday.workday_type[0]}) Notes", class: "route-title" %>
@@ -40,20 +42,6 @@
             <%= f.submit "Add New Note"%>
           </div>
         <% end %> 
-      </div>
-
-    </div>
-
-    <div class="col-lg-6">
-      <div class="jumbotron">
-        <% @building.each do |b| %>
-          <h3 class="h3-responsive"><%= b.building_number %></h3><%= link_to b.building_name, [@workday, b] %>
-          <p><strong><%= b.building_address %></strong></p>
-          <hr class="my-2">
-          <div align="center">
-            <%= will_paginate @building, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, :page_links => false %>  
-          </div>     
-        <% end %>   
       </div>
     </div>
   </div>

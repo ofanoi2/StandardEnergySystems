@@ -1,25 +1,27 @@
 <h1>Listing Workdays</h1>
 
 <%= link_to 'Create New Workday', new_workday_path %>
- 
-<div class="row">
-  <% @workdays.each do |workday| %>
-    <div class="col-sm-4">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1><%= workday.title %></h1>
-          <h2><%= workday.workday_type %></h2>
-        </div>
-        <div class="panel-body">
-          <p>
-            <strong>Complete:</strong>
-            <%= workday.complete %>
-          </p>
-        </div>
-        <div class="panel-footer">
-          <button class="btn btn-lg"><%= link_to 'Show', workday_path(workday) %></button>
-        </div>
+
+<div class="container-fluid">
+  <div class="row">
+    <% @workdays.each do |workday| %>
+      <div class="col-sm-4">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1><%= workday.title %></h1>
+            <h2><%= workday.workday_type %></h2>
+          </div>
+          <div class="panel-body">
+            <p>
+              <strong>Complete:</strong>
+              <%= workday.complete %>
+            </p>
+          </div>
+          <div class="panel-footer">
+            <button class="btn btn-lg"><%= link_to 'Show', workday_path(workday) %></button>
+          </div>
+        </div> 
       </div> 
-    </div> 
-  <% end %>  
-</div>  
+    <% end %>  
+  </div>  
+</div>

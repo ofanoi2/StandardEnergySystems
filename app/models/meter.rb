@@ -53,9 +53,9 @@ class Meter < ApplicationRecord
     elsif current_read < previous_read
       errors.add(:current_read, " is less than previous read. Please check read!")
     elsif @difference.to_f < 0.5 
-      errors.add(self.previous_read, "Check again")
+      errors.add(self.previous_read.to_s, "Check again")
     elsif @difference.to_f > 0.5
-      errors.add(self.previous_read, "Check again")
+      errors.add(self.previous_read.to_s, "Check again")
       errors.add(previous_read)
     end   
   end
